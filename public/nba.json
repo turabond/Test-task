@@ -1,0 +1,89 @@
+{
+	"1": {
+		"id": 1,
+		"date": "2008-10-05",
+		"title": "Slam dunk 1",
+		"type": 1,
+		"thumb": "images/img_1.jpg"
+	},
+	"2": {
+		"id": 2,
+		"date": "2008-02-10",
+		"title": "Slam dunk 2",
+		"type": 2,
+		"src": "video/video_1.mp4",
+		"thumb": "images/img_10.jpg"
+	},
+	"3": {
+		"id": 3,
+		"date": "2016-02-10",
+		"title": "Slam dunk 3",
+		"type": 1,
+		"thumb": "images/img_2.jpg"
+	},
+	"4": {
+		"id": 4,
+		"date": "2016-08-01",
+		"title": "Slam dunk 4",
+		"type": 1,
+		"thumb": "images/img_3.jpg"
+	},
+	"5": {
+		"id": 5,
+		"date": "2013-08-01",
+		"title": "Slam dunk 5",
+		"type": 1,
+		"thumb": "images/img_4.jpg"
+	},
+	"6": {
+		"id": 6,
+		"date": "2013-09-12",
+		"title": "Slam dunk 6",
+		"type": 2,
+		"src": "video/video_2.mp4",
+		"thumb": "images/img_11.jpg"
+	},
+	"7": {
+		"id": 7,
+		"date": "2013-10-26",
+		"title": "Slam dunk 7",
+		"type": 1,
+		"thumb": "images/img_5.jpg"
+	},
+	"8": {
+		"id": 8,
+		"date": "2011-11-18",
+		"title": "Slam dunk 8",
+		"type": 1,
+		"thumb": "images/img_6.jpg"
+	},
+	"9": {
+		"id": 9,
+		"date": "1994-12-25",
+		"title": "Slam dunk 9",
+		"type": 1,
+		"thumb": "images/img_7.jpg"
+	},
+	"10": {
+		"id": 10,
+		"date": "1999-03-06",
+		"title": "Slam dunk 10",
+		"type": 2,
+		"src": "video/video_3.mp4",
+		"thumb": "images/img_12.jpg"
+	},
+	"11": {
+		"id": 11,
+		"date": "2000-02-29",
+		"title": "Slam dunk 11",
+		"type": 1,
+		"thumb": "images/img_8.jpg"
+	},
+	"12": {
+		"id": 12,
+		"date": "2007-07-19",
+		"title": "Slam dunk 12",
+		"type": 1,
+		"thumb": "images/img_9.jpg"
+	}
+}
