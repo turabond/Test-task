@@ -19,10 +19,19 @@ const Utils = {
        
         history.pushState(this.parseQueryStringParameter(), '', decodeURIComponent(`?${searchParams}`));
     },
+
+    async serialAsyncMap(collection, fn) {
+        let result = [];
+        for (let item of collection) {
+            result.push(await fn(item));
+        }
+        return result;
+    },
+
     
-    // sleep: (ms) => {
-    //     return new Promise(resolve => setTimeout(resolve, ms));
-    // },
+    async sleep(ms) {
+        await new Promise(resolve => setTimeout(resolve, ms));
+    },
 };
 
 export default Utils;

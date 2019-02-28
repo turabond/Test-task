@@ -4,7 +4,7 @@ import Header from './components/Header';
 import List from './components/List';
 import Utils from './services/Utils';
 import Video from './components/Video';
-import getList from './services/api';
+import getList from './services/api'
 
 const App = {
     Create() {
@@ -18,48 +18,68 @@ const App = {
                 date: 'all',
                 sort: 'asc',
             },
+            videoView: null,
+            headerView: null,
+            listView: null,
         },
         async init() {
+            const app = document.getElementById('app');
             const headerContainer = document.getElementById('headerContainer');
             const videoContainer = document.getElementById('videoContainer');
             const params = Utils.parseQueryStringParameter();
+
             const data = await getList();
-            
+
             this.state.items = Object.keys(data).map(item => data[item]);
-            this.state.video = Video.Create(videoContainer);
-            
-            const headerView = Header.Create(this.state);
-            headerView.render(headerContainer);
+            this.state.headerView = Header.Create(this.state);
+            this.state.headerView.render(headerContainer);
+
+            const images = this.state.items.map(item => `public/${item.thumb}`);
+            await Utils.serialAsyncMap(images, this.preloadImage);
+
+            app.classList.add('loaded');
+
+            this.state.videoView = Video.Create(videoContainer);
 
             if (Object.keys(params).length) {
                 this.state.params = {...this.state.params, ...params};
                 this.filterSortItems(this.state);
-                headerView.updateState(this.state.params);
+                this.state.headerView.updateState(this.state.params);
             } else {
                 this.showItems(this.state.items);
             }
 
-            headerView.onChange(this.onFilterChange.bind(this));
+            this.state.headerView.onChange(this.onFilterChange.bind(this));
             window.addEventListener('popstate', this.onPopState.bind(this), false);
-    
         },
         
         showItems(data) {
             const listContainer = document.getElementById('listContainer');
-            const listView = List.Create((item) => {
+            this.state.listView = List.Create((item) => {
                 this.showVideo(item);
             });
-            listView.render(listContainer, data);
+            this.state.listView.render(listContainer, data);
         },
 
         showVideo (item) {
-            this.state.video.play(item);
+            this.state.videoView.play(item);
         },
         
         onPopState(e) {
-            e.preventDefault();
-            this.state.params = {...this.state.params, ...e.state};
+            let params = Utils.parseQueryStringParameter();
+
+            if (!Object.keys(params).length) {
+                params = {
+                    filter: 'all',
+                    date: 'all',
+                    sort: 'asc',
+                };
+            }
+
+            this.state.params = {...this.state.params, ...params};
+            this.state.headerView.updateState(this.state.params);
             this.filterSortItems(this.state);
+            e.preventDefault();
         },
         
         onFilterChange(name, value) {
@@ -100,6 +120,15 @@ const App = {
             });
 
             this.showItems(filteredItems);
+        },
+
+        preloadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => resolve(img);
+                img.onerror = () => reject();
+                img.src = src;
+            });
         },
     },
 };
