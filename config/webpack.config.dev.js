@@ -18,6 +18,13 @@ module.exports = merge(common, {
   plugins: [
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
+    }),
+    new Webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+      options: {
+        context: Path.resolve(__dirname, '../src'),
+      }
     })
   ],
   module: {

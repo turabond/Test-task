@@ -20,7 +20,7 @@ const Header = {
                             <div class="filter">
                                 <h6 class="filter__text">filter</h6>
                                 <div class="filter__buttons">
-                                    <input type="radio" name="filter" id="filter_1" value="all">
+                                    <input checked type="radio" name="filter" id="filter_1" value="all">
                                     <label for="filter_1" class="filter__button">all</label>
                                     <input type="radio" name="filter" id="filter_2" value="image">
                                     <label for="filter_2" class="filter__button">image</label>
