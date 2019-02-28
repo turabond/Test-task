@@ -6,8 +6,6 @@ import Utils from './services/Utils';
 import Video from './components/Video';
 import getList from './services/api';
 
-import "./App.scss";
-
 const App = {
     Create() {
         return {...this.methods};
